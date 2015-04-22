@@ -3,7 +3,12 @@ package holamundo;
 import Clases.ListaImagenes;
 import Clases.Panel;
 import Clases.Hilo;
+import ConexionBD.AppletDAO;
+import ConexionBD.ConexionBD;
+import TO.EstudianteTO;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -315,6 +320,11 @@ public class Window extends javax.swing.JApplet {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComenzarActionPerformed
+        if (!util.Util.validarEmail(jtfCorreo.getText())) {
+            jlMensajeError.setText("El correo no es válido");
+            jlMensajeError.setForeground(Color.red);
+            return;
+        }
         jbComenzar.setEnabled(false);
         jbAdelante.setEnabled(true);
         jbAtras.setEnabled(true);
@@ -333,6 +343,7 @@ public class Window extends javax.swing.JApplet {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // Pimer metodo en activarse, aqui se inicializaran los valores
+        ConexionBD.setConexion();
         jbComenzar.setEnabled(true);
         jbAdelante.setEnabled(false);
         jbAtras.setEnabled(false);
@@ -364,6 +375,13 @@ public class Window extends javax.swing.JApplet {
         contador = 0;
 
     }//GEN-LAST:event_jbResetActionPerformed
+
+    public void abrirVentana() {
+        JOptionPane.showMessageDialog(null, "Se acabó el tiempo");
+        hilo.reanudarHilo();
+        hilo.setCorriendo(false);
+        insertarDatos();
+    }
 
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
@@ -412,17 +430,41 @@ public class Window extends javax.swing.JApplet {
             String titulo = "Notificación";
             String mensaje = "¿Desea finalizar la prueba ? \n Dejo preguntas sin contestar";
             int x = JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (x == 0) {
+            if (x == 0) { // si
                 hilo.reanudarHilo();
                 hilo.setCorriendo(false);
-            } else {
+                insertarDatos();
+            } else { // no
                 hilo.reanudarHilo();
             }
         } else {
+
             hilo.reanudarHilo();
             hilo.setCorriendo(false);
+            insertarDatos();
         }
     }//GEN-LAST:event_jbFinalizarActionPerformed
+
+    private void insertarDatos() {
+        EstudianteTO estudiante = new EstudianteTO();
+        estudiante.setNombre(jtfNombre.getText());
+        estudiante.setEmail(jtfCorreo.getText());
+        estudiante.setFecha(new Date());
+        estudiante.setTiempo(jlMinutos + ":" + jlSegundos);
+        int id = AppletDAO.insertarEstudiante(estudiante);
+        if (id == 0) {
+            jlMensajeError.setText("Hubo un error al insertar los datos del estudiante.");
+            jlMensajeError.setForeground(Color.red);
+            return;
+        }
+        if (!AppletDAO.insertarRespuestas(ListaImagenes.getLista(), id)) {
+            jlMensajeError.setText("Hubo un error al insertar las resupuestas.");
+            jlMensajeError.setForeground(Color.red);
+            return;
+        }
+        jlMensajeError.setText("La inserción se realizó con éxito. Se le enviará un correo a tu profesor para evaluarte.");
+        jlMensajeError.setForeground(Color.green);
+    }
 
     private void pintarPanel() {
         jPanel1.removeAll();

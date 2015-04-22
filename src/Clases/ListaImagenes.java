@@ -1,5 +1,6 @@
 package Clases;
 
+import TO.DescripcionImagenTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +31,9 @@ public class ListaImagenes {
 
     public static void setDescripcion(int i, String descripcion) {
         lista.get(i).setDescripcion(descripcion);
+    }
+
+    public static List<DescripcionImagenTO> getLista() {
+        return lista;
     }
 }

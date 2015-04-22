@@ -1,6 +1,7 @@
 package Clases;
 
 import holamundo.Window;
+import java.awt.Color;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Hilo implements Runnable {
     @Override
     public void run() {
         corriendo = true;
-        while (corriendo) {
+        while (corriendo && minutos < 10) {
             try {
                 segundos++;
                 if (segundos == 60) {
@@ -32,6 +33,16 @@ public class Hilo implements Runnable {
                 StringBuilder sSegindos = new StringBuilder(String.valueOf(segundos)).insert(0, String.valueOf(segundos).length() == 1 ? "0" : "");
                 window.getJlMinutos().setText(sMinutos.toString());
                 window.getJlSegundos().setText(sSegindos.toString());
+                if (minutos < 5) {
+                    window.getJlMinutos().setForeground(Color.GREEN);
+                    window.getJlSegundos().setForeground(Color.GREEN);
+                } else if (minutos >= 5 && minutos < 8) {
+                    window.getJlMinutos().setForeground(Color.ORANGE);
+                    window.getJlSegundos().setForeground(Color.ORANGE);
+                } else {
+                    window.getJlMinutos().setForeground(Color.RED);
+                    window.getJlSegundos().setForeground(Color.RED);
+                }
                 Thread.sleep(1000);
                 synchronized (this) {
                     while (suspender) {
@@ -42,6 +53,7 @@ public class Hilo implements Runnable {
                 corriendo = false;
             }
         }
+        window.abrirVentana();
     }
 
     public boolean isCorriendo() {

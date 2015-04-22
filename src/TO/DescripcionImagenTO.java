@@ -1,13 +1,13 @@
-package Clases;
+package TO;
 
 /**
  *
  * @author estebanfcv
  */
 public class DescripcionImagenTO {
-    
+
     private String nombre;
-    private String descripcion="";
+    private String descripcion = "";
 
     public DescripcionImagenTO(String nombre) {
         this.nombre = nombre;
@@ -26,6 +26,6 @@ public class DescripcionImagenTO {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.descripcion = descripcion == null ? "" : descripcion.trim();
     }
 }
