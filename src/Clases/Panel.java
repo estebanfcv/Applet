@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.awt.Dimension;
@@ -15,7 +10,7 @@ import javax.swing.ImageIcon;
  */
 public class Panel extends javax.swing.JPanel {
     
-    private String imagen;
+    private final String imagen;
 
     public Panel(String imagen) {
         this.setSize(318, 164);

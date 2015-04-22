@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package holamundo;
 
 import Clases.ListaImagenes;
@@ -10,6 +5,7 @@ import Clases.Panel;
 import Clases.Hilo;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,7 +89,8 @@ public class Window extends javax.swing.JApplet {
         jlSegundos = new javax.swing.JLabel();
         jlSeparador = new javax.swing.JLabel();
         jbFinalizar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jlMensajeError = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,11 +179,16 @@ public class Window extends javax.swing.JApplet {
         jlSeparador.setText(":");
 
         jbFinalizar.setText("Finalizar");
-
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbFinalizarActionPerformed(evt);
+            }
+        });
+
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
             }
         });
 
@@ -231,33 +233,29 @@ public class Window extends javax.swing.JApplet {
                         .addComponent(jlSeparador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlSegundos)
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jlInstrucciones))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jlInstrucciones2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(113, 113, 113)
-                .addComponent(jbFinalizar)
-                .addGap(289, 289, 289))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlInstrucciones)
+                            .addComponent(jlInstrucciones2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbGuardar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlMensajeError)
+                            .addComponent(jbFinalizar))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,17 +296,21 @@ public class Window extends javax.swing.JApplet {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(91, 91, 91)
                                 .addComponent(jbAtras)))))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel6)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbGuardar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
+                .addComponent(jlMensajeError)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbFinalizar)
-                    .addComponent(jButton1))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jbFinalizar)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,10 +318,10 @@ public class Window extends javax.swing.JApplet {
         jbComenzar.setEnabled(false);
         jbAdelante.setEnabled(true);
         jbAtras.setEnabled(true);
-        jPanel1.removeAll();
-        Panel p = new Panel(ListaImagenes.obtenerImagen(contador));
-        this.jPanel1.add(p, BorderLayout.CENTER);
-        this.jPanel1.repaint();
+        jbFinalizar.setEnabled(true);
+        jbGuardar.setEnabled(true);
+        jbReset.setEnabled(true);
+        pintarPanel();
         hilo = new Hilo(this);
         Thread thread = new Thread(hilo);
         thread.start();
@@ -334,21 +336,31 @@ public class Window extends javax.swing.JApplet {
         jbComenzar.setEnabled(true);
         jbAdelante.setEnabled(false);
         jbAtras.setEnabled(false);
+        jbFinalizar.setEnabled(false);
+        jbGuardar.setEnabled(false);
+        jbReset.setEnabled(false);
         contador = 0;
         jtfNombre.setText("");
+        jlMinutos.setText("00");
+        jlSegundos.setText("00");
         jtfCorreo.setText("");
-        new ListaImagenes();
+        ListaImagenes.armarListaImagenes();
         tamanio = ListaImagenes.getTamanio();
     }//GEN-LAST:event_formComponentShown
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
         hilo.setCorriendo(false);
-        new ListaImagenes();
+        ListaImagenes.armarListaImagenes();
         jbComenzar.setEnabled(true);
         jbAdelante.setEnabled(false);
         jbAtras.setEnabled(false);
+        jbFinalizar.setEnabled(false);
+        jbGuardar.setEnabled(false);
+        jbReset.setEnabled(false);
         jtfNombre.setText("");
         jtfCorreo.setText("");
+        jlMinutos.setText("00");
+        jlSegundos.setText("00");
         contador = 0;
 
     }//GEN-LAST:event_jbResetActionPerformed
@@ -358,17 +370,12 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_jtfNombreActionPerformed
 
     private void jbAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtrasActionPerformed
-        // TODO add your handling code here:
-//       
-        jPanel1.removeAll();
         try {
-            Panel p = new Panel(ListaImagenes.obtenerImagen(contador));
-            this.jPanel1.add(p, BorderLayout.CENTER);
-            this.jPanel1.repaint();
             contador--;
             if (contador < 0) {
                 contador = tamanio - 1;
             }
+            pintarPanel();
             jtaDescripcion.setText(ListaImagenes.getDescripcion(contador));
         } catch (Exception e) {
             jLabel2.setText(e.getMessage());
@@ -376,26 +383,53 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_jbAtrasActionPerformed
 
     private void jbAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdelanteActionPerformed
-        // TODO add your handling code here:
-        jPanel1.removeAll();
         try {
-            Panel p = new Panel(ListaImagenes.obtenerImagen(contador));
-            this.jPanel1.add(p, BorderLayout.CENTER);
-            this.jPanel1.repaint();
             contador++;
             if (contador == tamanio) {
                 contador = 0;
             }
+            pintarPanel();
             jtaDescripcion.setText(ListaImagenes.getDescripcion(contador));
         } catch (Exception e) {
             jLabel2.setText(e.getMessage());
         }
     }//GEN-LAST:event_jbAdelanteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         ListaImagenes.setDescripcion(contador, jtaDescripcion.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarActionPerformed
+        hilo.suspenderHilo();
+        boolean vacio = false;
+        for (int i = 0; i < tamanio; i++) {
+            if (ListaImagenes.getDescripcion(i).isEmpty()) {
+                vacio = true;
+                break;
+            }
+        }
+        if (vacio) {
+            String titulo = "Notificación";
+            String mensaje = "¿Desea finalizar la prueba ? \n Dejo preguntas sin contestar";
+            int x = JOptionPane.showConfirmDialog(null, mensaje, titulo, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (x == 0) {
+                hilo.reanudarHilo();
+                hilo.setCorriendo(false);
+            } else {
+                hilo.reanudarHilo();
+            }
+        } else {
+            hilo.reanudarHilo();
+            hilo.setCorriendo(false);
+        }
+    }//GEN-LAST:event_jbFinalizarActionPerformed
+
+    private void pintarPanel() {
+        jPanel1.removeAll();
+        Panel p = new Panel(ListaImagenes.getNombreImagen(contador));
+        jPanel1.add(p, BorderLayout.CENTER);
+        jPanel1.repaint();
+    }
 
     public JLabel getJlMinutos() {
         return jlMinutos;
@@ -415,7 +449,6 @@ public class Window extends javax.swing.JApplet {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -428,10 +461,12 @@ public class Window extends javax.swing.JApplet {
     private javax.swing.JButton jbAtras;
     private javax.swing.JButton jbComenzar;
     private javax.swing.JButton jbFinalizar;
+    private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbReset;
     private javax.swing.JLabel jlCorreo;
     private javax.swing.JLabel jlInstrucciones;
     private javax.swing.JLabel jlInstrucciones2;
+    private javax.swing.JLabel jlMensajeError;
     private javax.swing.JLabel jlMinutos;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlSegundos;

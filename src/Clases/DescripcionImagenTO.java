@@ -7,17 +7,11 @@ package Clases;
 public class DescripcionImagenTO {
     
     private String nombre;
-    private String descripcion;
+    private String descripcion="";
 
-    public DescripcionImagenTO() {
-    }
-
-    public DescripcionImagenTO(String nombre, String descripcion) {
+    public DescripcionImagenTO(String nombre) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
     }
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -34,7 +28,4 @@ public class DescripcionImagenTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
-    
 }
