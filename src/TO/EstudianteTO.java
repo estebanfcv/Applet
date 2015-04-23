@@ -7,13 +7,19 @@ import java.util.Date;
  * @author estebanfcv
  */
 public class EstudianteTO {
+
     private int id;
-    private String nombre="";
-    private String email="";
+    private String nombre = "";
+    private String email = "";
     private float calificacion;
-    private String retroalimentacion="";
-    private String tiempo="";
+    private String retroalimentacion = "---Vacio---";
+    private String tiempo = "";
     private Date fecha;
+
+    @Override
+    public String toString() {
+        return email;
+    }
 
     public int getId() {
         return id;

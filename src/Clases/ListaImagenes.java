@@ -13,6 +13,7 @@ public class ListaImagenes {
     private static final List<DescripcionImagenTO> lista = new ArrayList<DescripcionImagenTO>();
 
     public static void armarListaImagenes() {
+        lista.clear();
         lista.add(new DescripcionImagenTO("/imagenes/ardilla.png"));
         lista.add(new DescripcionImagenTO("/imagenes/emma.jpg"));
     }

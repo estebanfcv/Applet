@@ -3,23 +3,15 @@ package holamundo;
 import Clases.ListaImagenes;
 import Clases.Panel;
 import Clases.Hilo;
-import ConexionBD.AppletDAO;
-import ConexionBD.ConexionBD;
 import TO.EstudianteTO;
+import ficheros.Fichero;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import util.Util;
 
 /**
  *
@@ -585,7 +577,7 @@ public class Window extends javax.swing.JApplet {
 //            jlMensajeError.setForeground(Color.red);
 //            return;
 //        }
-        if (AppletDAO.obtenerEstudiante(jtfCorreo.getText()).getId() > 0) {
+        if (Fichero.obtenerEstudiante(jtfCorreo.getText()).getId() > 0) {
             jlMensajeError.setText("El usuario ya está registrado");
             jlMensajeError.setForeground(Color.red);
             return;
@@ -609,23 +601,9 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_formMouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        Util.generarArchivos();
+        Util.armarListaContadores();
         // Pimer metodo en activarse, aqui se inicializaran los valores
-//        File f = new File("/home/estebanfcv/pendientes.txt");
-//        jlMensajeError.setText("f existe::::: " +f);
-        InputStream i = this.getClass().getResourceAsStream("../archivos/estudiantes.txt");
-//        jlMensajeError.setText("i vale " + i.toString());
-        BufferedReader reader = new BufferedReader(new InputStreamReader(i));
-        StringBuilder out = new StringBuilder();
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                out.append(line);
-            }
-            reader.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jlMensajeError.setText("i vale " + out.toString());   //Prints the string content read from input stream
 
 //        ConexionBD.setConexion();
         jbComenzar.setEnabled(true);
@@ -643,9 +621,9 @@ public class Window extends javax.swing.JApplet {
         jtfCorreo.setText("");
         ListaImagenes.armarListaImagenes();
         tamanio = ListaImagenes.getTamanio();
-//        jlMensajeCalificacion.setText("");
-//        jlMensajeResultado.setText("");
-//        jlMensajeError.setText("");
+        jlMensajeCalificacion.setText("");
+        jlMensajeResultado.setText("");
+        jlMensajeError.setText("");
     }//GEN-LAST:event_formComponentShown
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
@@ -666,6 +644,7 @@ public class Window extends javax.swing.JApplet {
         jlSegundos.setText("00");
         contador = 0;
         jlMensajeError.setText("");
+        jtaDescripcion.setText("");
     }//GEN-LAST:event_jbResetActionPerformed
 
     public void abrirVentana() {
@@ -735,6 +714,7 @@ public class Window extends javax.swing.JApplet {
             hilo.setCorriendo(false);
             insertarDatos();
         }
+        Util.actualizarContadores();
     }//GEN-LAST:event_jbFinalizarActionPerformed
 
     private void jtfNombreResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreResultadoActionPerformed
@@ -753,11 +733,11 @@ public class Window extends javax.swing.JApplet {
             jlMensajeResultado.setForeground(Color.red);
             return;
         }
-        EstudianteTO estudiante = AppletDAO.obtenerEstudiante(jtfEmailRegistro.getText());
+        EstudianteTO estudiante = Fichero.obtenerEstudiante(jtfEmailRegistro.getText());
         if (estudiante.getId() == 0) {
             jlMensajeResultado.setText("El usuario no existe");
             jlMensajeResultado.setForeground(Color.red);
-        } else if (estudiante.getCalificacion() == 0 && estudiante.getRetroalimentacion().isEmpty()) {
+        } else if (estudiante.getCalificacion() == 0 && estudiante.getRetroalimentacion().equals("---Vacio---")) {
             jlMensajeResultado.setText("Tu profesor todavía no te evalua. Intentalo más tarde.");
             jlMensajeResultado.setForeground(Color.red);
         } else {
@@ -766,7 +746,7 @@ public class Window extends javax.swing.JApplet {
             jtfEmailRegistro.setEditable(false);
             jtfNombreResultado.setText(estudiante.getNombre());
             jtfEmailResultado.setText(estudiante.getEmail());
-            jtfFechaResultado.setText(estudiante.getFecha().toString());
+            jtfFechaResultado.setText(new SimpleDateFormat("dd/MM/yyyy").format(estudiante.getFecha()));
             jtfTiempoResultado.setText(estudiante.getTiempo());
             jtaRetroalimentacionResultado.setText(estudiante.getRetroalimentacion());
             jtfCalificacionResultado.setText(String.valueOf(estudiante.getCalificacion()));
@@ -807,13 +787,13 @@ public class Window extends javax.swing.JApplet {
         estudiante.setEmail(jtfCorreo.getText());
         estudiante.setFecha(new Date());
         estudiante.setTiempo(jlMinutos.getText() + ":" + jlSegundos.getText());
-        int id = AppletDAO.insertarEstudiante(estudiante);
+        int id = Fichero.registrarEstudiante(estudiante);
         if (id == 0) {
             jlMensajeError.setText("Hubo un error al insertar los datos del estudiante.");
             jlMensajeError.setForeground(Color.red);
             return;
         }
-        if (!AppletDAO.insertarRespuestas(ListaImagenes.getLista(), id)) {
+        if (!Fichero.insertarRespuestas(ListaImagenes.getLista(), id)) {
             jlMensajeError.setText("Hubo un error al insertar las resupuestas.");
             jlMensajeError.setForeground(Color.red);
             return;

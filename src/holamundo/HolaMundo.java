@@ -6,6 +6,8 @@
 
 package holamundo;
 
+import java.io.File;
+
 /**
  *
  * @author estebanfcv
@@ -16,6 +18,7 @@ public class HolaMundo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println(File.separator);
         // TODO code application logic here
     }
     
