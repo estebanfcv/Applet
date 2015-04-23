@@ -130,6 +130,7 @@ public class Window extends javax.swing.JApplet {
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1229, 610));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,6 +330,8 @@ public class Window extends javax.swing.JApplet {
 
         jLabel7.setText("Software realizado por Esteban Chaparro 2015");
 
+        jLabel8.setText("QUESO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -338,7 +341,10 @@ public class Window extends javax.swing.JApplet {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(243, 243, 243)
+                                .addComponent(jLabel8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addGap(12, 12, 12)
@@ -418,8 +424,8 @@ public class Window extends javax.swing.JApplet {
                                                 .addGap(4, 4, 4)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jlMensajeCalificacion)
-                                                    .addComponent(jtfCalificacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                                    .addComponent(jtfCalificacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(64, 64, 64)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -505,7 +511,9 @@ public class Window extends javax.swing.JApplet {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel1))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8))
                             .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jlMinutos)
@@ -602,10 +610,10 @@ public class Window extends javax.swing.JApplet {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // Pimer metodo en activarse, aqui se inicializaran los valores
-        File f = new File("/home/estebanfcv/pendientes.txt");
-        System.out.println("f existe::::: "+f.exists());
+//        File f = new File("/home/estebanfcv/pendientes.txt");
+//        jlMensajeError.setText("f existe::::: " +f);
         InputStream i = this.getClass().getResourceAsStream("../archivos/estudiantes.txt");
-        System.out.println("i vale "+i.toString());
+//        jlMensajeError.setText("i vale " + i.toString());
         BufferedReader reader = new BufferedReader(new InputStreamReader(i));
         StringBuilder out = new StringBuilder();
         String line;
@@ -617,7 +625,7 @@ public class Window extends javax.swing.JApplet {
         } catch (IOException ex) {
             Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(out.toString());   //Prints the string content read from input stream
+        jlMensajeError.setText("i vale " + out.toString());   //Prints the string content read from input stream
 
 //        ConexionBD.setConexion();
         jbComenzar.setEnabled(true);
@@ -635,9 +643,9 @@ public class Window extends javax.swing.JApplet {
         jtfCorreo.setText("");
         ListaImagenes.armarListaImagenes();
         tamanio = ListaImagenes.getTamanio();
-        jlMensajeCalificacion.setText("");
-        jlMensajeResultado.setText("");
-        jlMensajeError.setText("");
+//        jlMensajeCalificacion.setText("");
+//        jlMensajeResultado.setText("");
+//        jlMensajeError.setText("");
     }//GEN-LAST:event_formComponentShown
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
@@ -849,6 +857,7 @@ public class Window extends javax.swing.JApplet {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
