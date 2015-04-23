@@ -8,7 +8,16 @@ import ConexionBD.ConexionBD;
 import TO.EstudianteTO;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -593,7 +602,24 @@ public class Window extends javax.swing.JApplet {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // Pimer metodo en activarse, aqui se inicializaran los valores
-        ConexionBD.setConexion();
+        File f = new File("/home/estebanfcv/pendientes.txt");
+        System.out.println("f existe::::: "+f.exists());
+        InputStream i = this.getClass().getResourceAsStream("../archivos/estudiantes.txt");
+        System.out.println("i vale "+i.toString());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(i));
+        StringBuilder out = new StringBuilder();
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                out.append(line);
+            }
+            reader.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(out.toString());   //Prints the string content read from input stream
+
+//        ConexionBD.setConexion();
         jbComenzar.setEnabled(true);
         jbAdelante.setEnabled(false);
         jbAtras.setEnabled(false);
