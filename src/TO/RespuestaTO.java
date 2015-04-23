@@ -7,8 +7,8 @@ package TO;
 public class RespuestaTO {
     
     private int id;
-    private String pregunta;
-    private String respuesta;
+    private String pregunta="";
+    private String respuesta="";
     private int idEstudiante;
 
     public int getId() {

@@ -21,6 +21,7 @@ public class Window extends javax.swing.JApplet {
     private int contador;
     private int tamanio;
     private Hilo hilo;
+    private boolean reset;
 
     /**
      * Initializes the applet Window
@@ -108,7 +109,11 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
-        jbComenzar.setText("Comenzar");
+        jbComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/comenzar.png"))); // NOI18N
+        jbComenzar.setToolTipText("Comenzar");
+        jbComenzar.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbComenzar.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbComenzar.setPreferredSize(new java.awt.Dimension(32, 32));
         jbComenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbComenzarActionPerformed(evt);
@@ -128,7 +133,10 @@ public class Window extends javax.swing.JApplet {
             .addGap(0, 227, Short.MAX_VALUE)
         );
 
-        jbReset.setText("Reiniciar");
+        jbReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/restart.png"))); // NOI18N
+        jbReset.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbReset.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbReset.setPreferredSize(new java.awt.Dimension(32, 32));
         jbReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbResetActionPerformed(evt);
@@ -163,14 +171,20 @@ public class Window extends javax.swing.JApplet {
         jtaDescripcion.setRows(5);
         jScrollPane1.setViewportView(jtaDescripcion);
 
-        jbAdelante.setText("Adelante");
+        jbAdelante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/adelante.png"))); // NOI18N
+        jbAdelante.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbAdelante.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbAdelante.setPreferredSize(new java.awt.Dimension(32, 32));
         jbAdelante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAdelanteActionPerformed(evt);
             }
         });
 
-        jbAtras.setText("Atras");
+        jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/atras.png"))); // NOI18N
+        jbAtras.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbAtras.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbAtras.setPreferredSize(new java.awt.Dimension(32, 32));
         jbAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAtrasActionPerformed(evt);
@@ -183,14 +197,22 @@ public class Window extends javax.swing.JApplet {
 
         jlSeparador.setText(":");
 
-        jbFinalizar.setText("Finalizar");
+        jbFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/finalizar.png"))); // NOI18N
+        jbFinalizar.setToolTipText("Finalizar");
+        jbFinalizar.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbFinalizar.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbFinalizar.setPreferredSize(new java.awt.Dimension(32, 32));
         jbFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbFinalizarActionPerformed(evt);
             }
         });
 
-        jbGuardar.setText("Guardar");
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/guardar.png"))); // NOI18N
+        jbGuardar.setToolTipText("Guardar");
+        jbGuardar.setMaximumSize(new java.awt.Dimension(32, 32));
+        jbGuardar.setMinimumSize(new java.awt.Dimension(32, 32));
+        jbGuardar.setPreferredSize(new java.awt.Dimension(32, 32));
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -202,14 +224,9 @@ public class Window extends javax.swing.JApplet {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jbAtras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jlCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,16 +237,21 @@ public class Window extends javax.swing.JApplet {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbComenzar)))
+                        .addComponent(jbComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbAdelante))
+                .addComponent(jbAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbReset)
+                        .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,20 +275,20 @@ public class Window extends javax.swing.JApplet {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbGuardar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(295, 295, 295)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlMensajeError)
-                            .addComponent(jbFinalizar))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jbFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlMensajeError))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbReset)
+                    .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jlMinutos)
                     .addComponent(jlSegundos)
@@ -282,9 +304,7 @@ public class Window extends javax.swing.JApplet {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbAdelante))
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -293,35 +313,58 @@ public class Window extends javax.swing.JApplet {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlCorreo)
-                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbComenzar))
-                        .addGap(18, 18, 18)
+                            .addComponent(jtfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(111, 111, 111)
+                        .addComponent(jbAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jbComenzar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(jbAtras)))))
+                                .addGap(98, 98, 98)
+                                .addComponent(jbAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jbGuardar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)))
                 .addComponent(jlMensajeError)
-                .addGap(18, 18, 18)
-                .addComponent(jbFinalizar)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jbFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComenzarActionPerformed
-        if (!util.Util.validarEmail(jtfCorreo.getText())) {
-            jlMensajeError.setText("El correo no es válido");
+        reset = false;
+        if (jtfNombre.getText().trim().isEmpty()) {
+            jlMensajeError.setText("Favor de escribir su nombre");
+            jlMensajeError.setForeground(Color.red);
+            return;
+        }
+        if (jtfCorreo.getText().trim().isEmpty()) {
+            jlMensajeError.setText("Favor de escribir su E-mail");
+            jlMensajeError.setForeground(Color.red);
+            return;
+        }
+//        if (!util.Util.validarEmail(jtfCorreo.getText())) {
+//            jlMensajeError.setText("El correo no es válido");
+//            jlMensajeError.setForeground(Color.red);
+//            return;
+//        }
+        if (AppletDAO.obtenerEstudiante(jtfCorreo.getText()) > 0) {
+            jlMensajeError.setText("El usuario ya está registrado");
             jlMensajeError.setForeground(Color.red);
             return;
         }
@@ -331,6 +374,8 @@ public class Window extends javax.swing.JApplet {
         jbFinalizar.setEnabled(true);
         jbGuardar.setEnabled(true);
         jbReset.setEnabled(true);
+        jtfNombre.setEditable(false);
+        jtfCorreo.setEditable(false);
         pintarPanel();
         hilo = new Hilo(this);
         Thread thread = new Thread(hilo);
@@ -350,6 +395,8 @@ public class Window extends javax.swing.JApplet {
         jbFinalizar.setEnabled(false);
         jbGuardar.setEnabled(false);
         jbReset.setEnabled(false);
+        jtfNombre.setEditable(true);
+        jtfCorreo.setEditable(true);
         contador = 0;
         jtfNombre.setText("");
         jlMinutos.setText("00");
@@ -360,6 +407,7 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_formComponentShown
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
+        reset = true;
         hilo.setCorriendo(false);
         ListaImagenes.armarListaImagenes();
         jbComenzar.setEnabled(true);
@@ -368,12 +416,14 @@ public class Window extends javax.swing.JApplet {
         jbFinalizar.setEnabled(false);
         jbGuardar.setEnabled(false);
         jbReset.setEnabled(false);
+        jtfNombre.setEditable(true);
+        jtfCorreo.setEditable(true);
         jtfNombre.setText("");
         jtfCorreo.setText("");
         jlMinutos.setText("00");
         jlSegundos.setText("00");
         contador = 0;
-
+        jlMensajeError.setText("");
     }//GEN-LAST:event_jbResetActionPerformed
 
     public void abrirVentana() {
@@ -418,6 +468,7 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarActionPerformed
+        reset = true;
         hilo.suspenderHilo();
         boolean vacio = false;
         for (int i = 0; i < tamanio; i++) {
@@ -438,7 +489,6 @@ public class Window extends javax.swing.JApplet {
                 hilo.reanudarHilo();
             }
         } else {
-
             hilo.reanudarHilo();
             hilo.setCorriendo(false);
             insertarDatos();
@@ -450,7 +500,7 @@ public class Window extends javax.swing.JApplet {
         estudiante.setNombre(jtfNombre.getText());
         estudiante.setEmail(jtfCorreo.getText());
         estudiante.setFecha(new Date());
-        estudiante.setTiempo(jlMinutos + ":" + jlSegundos);
+        estudiante.setTiempo(jlMinutos.getText() + ":" + jlSegundos.getText());
         int id = AppletDAO.insertarEstudiante(estudiante);
         if (id == 0) {
             jlMensajeError.setText("Hubo un error al insertar los datos del estudiante.");
@@ -462,7 +512,7 @@ public class Window extends javax.swing.JApplet {
             jlMensajeError.setForeground(Color.red);
             return;
         }
-        jlMensajeError.setText("La inserción se realizó con éxito. Se le enviará un correo a tu profesor para evaluarte.");
+        jlMensajeError.setText("La inserción se realizó con éxito.");
         jlMensajeError.setForeground(Color.green);
     }
 
@@ -489,6 +539,9 @@ public class Window extends javax.swing.JApplet {
         this.jlSegundos = jlSegundos;
     }
 
+    public boolean isReset() {
+        return reset;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

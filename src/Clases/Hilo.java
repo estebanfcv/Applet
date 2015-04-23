@@ -53,7 +53,9 @@ public class Hilo implements Runnable {
                 corriendo = false;
             }
         }
-        window.abrirVentana();
+        if (!window.isReset()) {
+            window.abrirVentana();
+        }
     }
 
     public boolean isCorriendo() {
