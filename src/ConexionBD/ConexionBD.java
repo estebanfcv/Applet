@@ -16,7 +16,7 @@ public class ConexionBD {
     public static void setConexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String servidor = "jdbc:mysql://localhost/applet";
+            String servidor = "jdbc:mysql://192.168.1.70/applet";
             String usuarioDB = "root";
             String passwordDB = "PassMysqlWord";
             connection = DriverManager.getConnection(servidor, usuarioDB, passwordDB);

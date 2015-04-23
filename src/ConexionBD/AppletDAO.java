@@ -44,8 +44,8 @@ public class AppletDAO {
         return listaEstudiantes;
     }
 
-    public static int obtenerEstudiante(String email) {
-        int id = 0;
+    public static EstudianteTO obtenerEstudiante(String email) {
+        EstudianteTO estudiante = new EstudianteTO();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -53,13 +53,21 @@ public class AppletDAO {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            id = rs.next() ? rs.getInt("id") : 0;
+            if(rs.next()){
+                estudiante.setId(rs.getInt("id"));
+                estudiante.setNombre(rs.getString("nombre"));
+                estudiante.setEmail(rs.getString("email"));
+                estudiante.setCalificacion(rs.getFloat("calificacion"));
+                estudiante.setRetroalimentacion(rs.getString("retroalimentacion"));
+                estudiante.setTiempo(rs.getString("tiempo"));
+                estudiante.setFecha(rs.getDate("fecha"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             ConexionBD.cerrarConexiones(rs, ps);
         }
-        return id;
+        return estudiante;
     }
 
     public static int insertarEstudiante(EstudianteTO estudiante) {
