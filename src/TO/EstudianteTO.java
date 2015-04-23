@@ -8,11 +8,11 @@ import java.util.Date;
  */
 public class EstudianteTO {
     private int id;
-    private String nombre;
-    private String email;
+    private String nombre="";
+    private String email="";
     private float calificacion;
-    private String retroalimentacionFinal;
-    private String tiempo;
+    private String retroalimentacion="";
+    private String tiempo="";
     private Date fecha;
 
     public int getId() {
@@ -47,12 +47,12 @@ public class EstudianteTO {
         this.calificacion = calificacion;
     }
 
-    public String getRetroalimentacionFinal() {
-        return retroalimentacionFinal;
+    public String getRetroalimentacion() {
+        return retroalimentacion;
     }
 
-    public void setRetroalimentacionFinal(String retroalimentacionFinal) {
-        this.retroalimentacionFinal = retroalimentacionFinal;
+    public void setRetroalimentacion(String retroalimentacion) {
+        this.retroalimentacion = retroalimentacion;
     }
 
     public String getTiempo() {
@@ -70,7 +70,4 @@ public class EstudianteTO {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    
-    
 }
