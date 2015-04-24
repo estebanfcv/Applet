@@ -14,12 +14,29 @@ public class ListaImagenes {
 
     public static void armarListaImagenes() {
         lista.clear();
-        lista.add(new DescripcionImagenTO("/imagenes/ardilla.png"));
-        lista.add(new DescripcionImagenTO("/imagenes/emma.jpg"));
+        lista.add(new DescripcionImagenTO("/imagenes/aplicacionWeb.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/chrome.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/css.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/firefox.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/glassfish.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/icefaces.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/jasperReports.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/java.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/linux.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/mysql.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/navicat.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/netbeans.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/servlet.png"));
+        lista.add(new DescripcionImagenTO("/imagenes/xhtml.png"));
     }
 
     public static String getNombreImagen(int i) {
-        return lista.get(i).getNombre();
+        try {
+            return lista.get(i).getNombre();
+        } catch (Exception e) {
+            return "";
+        }
+
     }
 
     public static String getDescripcion(int i) {

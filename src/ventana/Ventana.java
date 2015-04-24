@@ -1,8 +1,10 @@
 package ventana;
 
+import holamundo.Fondo;
 import TO.EstudianteTO;
 import TO.RespuestaTO;
 import ficheros.Fichero;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
@@ -63,6 +65,7 @@ public class Ventana extends javax.swing.JFrame {
         textoTiempo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -105,20 +108,28 @@ public class Ventana extends javax.swing.JFrame {
         campoCalificacion.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         campoCalificacion.setText("0.0");
         campoCalificacion.setMinimumSize(new java.awt.Dimension(86, 27));
-        campoCalificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCalificacionActionPerformed(evt);
+        campoCalificacion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                campoCalificacionMouseMoved(evt);
             }
         });
 
-        bGuardar.setText("Guardar");
+        bGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/guardar.png"))); // NOI18N
+        bGuardar.setToolTipText("Guardar");
+        bGuardar.setMaximumSize(new java.awt.Dimension(32, 32));
+        bGuardar.setMinimumSize(new java.awt.Dimension(32, 32));
+        bGuardar.setPreferredSize(new java.awt.Dimension(32, 32));
         bGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGuardarActionPerformed(evt);
             }
         });
 
-        bLimpiar.setText("Limpiar");
+        bLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/limpiar.png"))); // NOI18N
+        bLimpiar.setToolTipText("Limpiar");
+        bLimpiar.setMaximumSize(new java.awt.Dimension(32, 32));
+        bLimpiar.setMinimumSize(new java.awt.Dimension(32, 32));
+        bLimpiar.setPreferredSize(new java.awt.Dimension(32, 32));
         bLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bLimpiarActionPerformed(evt);
@@ -128,6 +139,8 @@ public class Ventana extends javax.swing.JFrame {
         mensajeError.setText("Mensaje Error");
 
         jLabel5.setText("Nombre");
+
+        textoNombre.setEditable(false);
 
         jLabel6.setText("Fecha");
 
@@ -147,92 +160,78 @@ public class Ventana extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboPregunta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlAlumno)
-                        .addGap(37, 37, 37)
-                        .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textoFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoNombre))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel4)
-                                .addGap(50, 50, 50)
-                                .addComponent(campoCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addComponent(bGuardar)
-                                .addGap(6, 6, 6)
-                                .addComponent(bLimpiar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(mensajeError)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(2, 2, 2)
-                                .addComponent(jScrollPane2)))))
+                        .addComponent(jlAlumno)
+                        .addGap(37, 37, 37)
+                        .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(12, 12, 12)
+                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(27, 27, 27)
+                        .addComponent(textoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel7)
+                        .addGap(12, 12, 12)
+                        .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel3)
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel4)
+                        .addGap(50, 50, 50)
+                        .addComponent(campoCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(bGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(bLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(mensajeError)))
                 .addGap(12, 12, 12))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jSeparator1)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jlAlumno))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlAlumno)
+                            .addComponent(jLabel5))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(comboPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(textoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel7))))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -251,13 +250,12 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(campoCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bGuardar)
-                    .addComponent(bLimpiar))
+                    .addComponent(bGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(mensajeError)
-                .addContainerGap())
+                .addComponent(mensajeError))
         );
 
         pack();
@@ -269,6 +267,9 @@ public class Ventana extends javax.swing.JFrame {
         System.out.println(opcion);
         comboPregunta.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"---Seleccione---"}));
         if (!opcion.equals("---Seleccione---")) {
+            bGuardar.setEnabled(true);
+            textoCalificacion.setEditable(true);
+            campoCalificacion.setEditable(true);
             estudiante = mapaEstudiantes.get(opcion);
             textoNombre.setText(estudiante.getNombre());
             textoFecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(estudiante.getFecha()));
@@ -282,20 +283,31 @@ public class Ventana extends javax.swing.JFrame {
             textoNombre.setText("");
             textoFecha.setText("");
             textoTiempo.setText("");
+            bGuardar.setEnabled(false);
+            textoCalificacion.setText("");
+            campoCalificacion.setText("0.0");
+            textoCalificacion.setEditable(false);
+            campoCalificacion.setEditable(false);
+
         }
     }//GEN-LAST:event_comboAlumnoActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        Fondo f = new Fondo();
+        this.add(f, BorderLayout.CENTER);
+        this.repaint();
         Util.armarListaContadores();
+        mensajeError.setText("");
         listaEstudiantes = Fichero.obtenerEstudiantes();
         for (EstudianteTO e : listaEstudiantes) {
             mapaEstudiantes.put(e.getEmail(), e);
             comboAlumno.addItem(e.getEmail());
         }
+        bGuardar.setEnabled(false);
+        textoCalificacion.setEditable(false);
+        campoCalificacion.setEditable(false);
+        campoCalificacion.setForeground(Color.RED);
     }//GEN-LAST:event_formComponentShown
-
-    private void campoCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCalificacionActionPerformed
-    }//GEN-LAST:event_campoCalificacionActionPerformed
 
     private void comboPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPreguntaActionPerformed
         String opcion = comboPregunta.getSelectedItem().toString();
@@ -314,7 +326,7 @@ public class Ventana extends javax.swing.JFrame {
         textoCalificacion.setText("");
         textoFecha.setText("");
         textoTiempo.setText("");
-        campoCalificacion.setText("");
+        campoCalificacion.setText("0.0");
     }//GEN-LAST:event_bLimpiarActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
@@ -323,8 +335,8 @@ public class Ventana extends javax.swing.JFrame {
             mensajeError.setForeground(Color.red);
             return;
         }
-        if (Util.isNumero(campoCalificacion.getText()) == 0) {
-            mensajeError.setText("La calificación es numérica");
+        if (Util.isNumero(campoCalificacion.getText()) <= 0 || Util.isNumero(campoCalificacion.getText()) > 10) {
+            mensajeError.setText("La calificación debe ser mayor a cero y menor a 10");
             mensajeError.setForeground(Color.red);
             return;
         }
@@ -341,6 +353,19 @@ public class Ventana extends javax.swing.JFrame {
 
     private void textoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFechaActionPerformed
     }//GEN-LAST:event_textoFechaActionPerformed
+
+    private void campoCalificacionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCalificacionMouseMoved
+        // TODO add your handling code here:
+        campoCalificacion.setText(String.valueOf(Util.isNumero(campoCalificacion.getText())));
+        float f = new Float(campoCalificacion.getText());
+        if (f >= 9) {
+            campoCalificacion.setForeground(Color.GREEN);
+        } else if (f >= 7 && f < 9) {
+            campoCalificacion.setForeground(Color.ORANGE);
+        } else {
+            campoCalificacion.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_campoCalificacionMouseMoved
 
     /**
      * @param args the command line arguments

@@ -20,8 +20,8 @@ import util.Util;
  */
 public class Fichero {
 
-    private static final File estudiantes = new File("/home/estebanfcv/estudiantes.txt");
-    private static final File respuestas = new File("/home/estebanfcv/respuestas.txt");
+    private static final File estudiantes = new File(System.getProperty("user.home") + File.separator + "estudiantes.txt");
+    private static final File respuestas = new File(System.getProperty("user.home") + File.separator + "respuestas.txt");
     private static int contador = Util.getContadorEstudiantes();
     private static int contadorRespuestas = Util.getContadorRespuestas();
 
@@ -194,8 +194,9 @@ public class Fichero {
             pw = new PrintWriter(fw);
             for (DescripcionImagenTO di : lista) {
                 String pregunta = di.getNombre().replace("/imagenes/", "");
-                pregunta=pregunta.substring(0, pregunta.lastIndexOf("."));
-                String renglon = ++contadorRespuestas + "|" + pregunta + "|" + di.getDescripcion() + "|" + id;
+                pregunta = pregunta.substring(0, pregunta.lastIndexOf("."));
+                String descripcion = di.getDescripcion().isEmpty() ? "---Vacio---" : di.getDescripcion();
+                String renglon = ++contadorRespuestas + "|" + pregunta + "|" + descripcion + "|" + id;
                 pw.append(renglon).append("\n");
             }
             exito = true;

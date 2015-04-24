@@ -22,7 +22,7 @@ public class Hilo implements Runnable {
     @Override
     public void run() {
         corriendo = true;
-        while (corriendo && minutos < 10) {
+        while (corriendo && minutos < 20) {
             try {
                 segundos++;
                 if (segundos == 60) {
@@ -33,10 +33,10 @@ public class Hilo implements Runnable {
                 StringBuilder sSegindos = new StringBuilder(String.valueOf(segundos)).insert(0, String.valueOf(segundos).length() == 1 ? "0" : "");
                 window.getJlMinutos().setText(sMinutos.toString());
                 window.getJlSegundos().setText(sSegindos.toString());
-                if (minutos < 5) {
+                if (minutos < 10) {
                     window.getJlMinutos().setForeground(Color.GREEN);
                     window.getJlSegundos().setForeground(Color.GREEN);
-                } else if (minutos >= 5 && minutos < 8) {
+                } else if (minutos >= 10 && minutos < 16) {
                     window.getJlMinutos().setForeground(Color.ORANGE);
                     window.getJlSegundos().setForeground(Color.ORANGE);
                 } else {

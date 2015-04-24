@@ -7,6 +7,7 @@
 package holamundo;
 
 import java.io.File;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,8 @@ public class HolaMundo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(File.separator);
+       int x = JOptionPane.showConfirmDialog(null, "asd", "ads", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+        System.out.println(x);
         // TODO code application logic here
     }
     

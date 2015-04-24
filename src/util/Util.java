@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,6 +70,7 @@ public class Util {
                 pw.append("0|0").append("\n");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
             e.printStackTrace();
         } finally {
             cerrarLecturaEscritura(pw, fw);
@@ -83,7 +85,6 @@ public class Util {
             br = new BufferedReader(fr);
             String linea;
             if ((linea = br.readLine()) != null) {
-                System.out.println("existo !!!!!!");
                 StringTokenizer st = new StringTokenizer(linea, "|");
                 contadores.add(new Integer(st.nextToken()));
                 contadores.add(new Integer(st.nextToken()));
@@ -130,5 +131,9 @@ public class Util {
             e.printStackTrace();
         }
         return f;
+    }
+
+    public static char getJavaVersion() {
+        return System.getProperty("java.version").charAt(2);
     }
 }

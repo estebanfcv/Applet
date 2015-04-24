@@ -8,6 +8,7 @@ import TO.EstudianteTO;
 import ficheros.Fichero;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JLabel;
@@ -123,7 +124,6 @@ public class Window extends javax.swing.JApplet {
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1229, 610));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,6 +162,7 @@ public class Window extends javax.swing.JApplet {
         );
 
         jbReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/restart.png"))); // NOI18N
+        jbReset.setToolTipText("Reiniciar");
         jbReset.setMaximumSize(new java.awt.Dimension(32, 32));
         jbReset.setMinimumSize(new java.awt.Dimension(32, 32));
         jbReset.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -171,28 +172,28 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
-        jlInstrucciones.setText("Instrucciones: A continuacion apareceran los logos de algunos de los programas que se utilizaran");
+        jlInstrucciones.setForeground(new java.awt.Color(0, 0, 0));
+        jlInstrucciones.setText("Instrucciones: A continuación aparecerán los logos de algunos de los programas que se utilizarán");
 
+        jlInstrucciones2.setForeground(new java.awt.Color(0, 0, 0));
         jlInstrucciones2.setText("en el curso. Describe con tus propias palabras lo que hayas entendido de cada uno de ellos.");
 
-        jLabel3.setForeground(java.awt.Color.red);
-        jLabel3.setText("NOTA: Contesta lo mejor que puedas ya que es una evaluacion, la retroalimentacion podrás");
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("NOTA: Contesta lo mejor que puedas ya que es una evaluación, la retroalimentación podrás");
 
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("consultarla en esta misma ventana. Tienes 10 minutos para responder.");
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("consultarla en esta misma ventana. Tienes 20 minutos para responder.");
 
+        jlNombre.setForeground(new java.awt.Color(0, 0, 0));
         jlNombre.setText("Nombre");
 
+        jlCorreo.setForeground(new java.awt.Color(0, 0, 0));
         jlCorreo.setText("E-mail");
 
-        jLabel5.setText("Tiempo");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/reloj.png"))); // NOI18N
+        jLabel5.setToolTipText("Tiempo");
 
-        jtfNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNombreActionPerformed(evt);
-            }
-        });
-
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Descripcion");
 
         jtaDescripcion.setColumns(20);
@@ -200,6 +201,7 @@ public class Window extends javax.swing.JApplet {
         jScrollPane1.setViewportView(jtaDescripcion);
 
         jbAdelante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/adelante.png"))); // NOI18N
+        jbAdelante.setToolTipText("Adelante");
         jbAdelante.setMaximumSize(new java.awt.Dimension(32, 32));
         jbAdelante.setMinimumSize(new java.awt.Dimension(32, 32));
         jbAdelante.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -210,6 +212,7 @@ public class Window extends javax.swing.JApplet {
         });
 
         jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/atras.png"))); // NOI18N
+        jbAtras.setToolTipText("Atras");
         jbAtras.setMaximumSize(new java.awt.Dimension(32, 32));
         jbAtras.setMinimumSize(new java.awt.Dimension(32, 32));
         jbAtras.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -219,10 +222,13 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
+        jlMinutos.setForeground(new java.awt.Color(0, 0, 0));
         jlMinutos.setText("00");
 
+        jlSegundos.setForeground(new java.awt.Color(0, 0, 0));
         jlSegundos.setText("00");
 
+        jlSeparador.setForeground(new java.awt.Color(0, 0, 0));
         jlSeparador.setText(":");
 
         jbFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/finalizar.png"))); // NOI18N
@@ -247,13 +253,16 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
+        jlMensajeError.setForeground(new java.awt.Color(0, 0, 0));
         jlMensajeError.setText("Mensaje de error");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jlConsultaCalificacion.setForeground(new java.awt.Color(0, 0, 0));
         jlConsultaCalificacion.setText("Consulta de calificaciones");
 
+        jlEmailRegistro.setForeground(new java.awt.Color(0, 0, 0));
         jlEmailRegistro.setText("E-mail de registro");
 
         jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/buscar.png"))); // NOI18N
@@ -267,27 +276,27 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
+        jlNombreResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlNombreResultado.setText("Nombre");
 
         jtfNombreResultado.setEditable(false);
-        jtfNombreResultado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNombreResultadoActionPerformed(evt);
-            }
-        });
 
+        jlEmailResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlEmailResultado.setText("E-mail");
 
         jtfEmailResultado.setEditable(false);
 
+        jlFechaResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlFechaResultado.setText("Fecha");
 
         jtfFechaResultado.setEditable(false);
 
+        jlTiempoResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlTiempoResultado.setText("Tiempo");
 
         jtfTiempoResultado.setEditable(false);
 
+        jlRetroalimentacionResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlRetroalimentacionResultado.setText("Retroalimentacion");
 
         jtaRetroalimentacionResultado.setEditable(false);
@@ -295,18 +304,15 @@ public class Window extends javax.swing.JApplet {
         jtaRetroalimentacionResultado.setRows(5);
         jScrollPane2.setViewportView(jtaRetroalimentacionResultado);
 
+        jlCalificacionResultado.setForeground(new java.awt.Color(0, 0, 0));
         jlCalificacionResultado.setText("Calificacion");
 
         jtfCalificacionResultado.setEditable(false);
         jtfCalificacionResultado.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jtfCalificacionResultado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCalificacionResultadoActionPerformed(evt);
-            }
-        });
 
         jlMensajeResultado.setText("Mensaje de error");
 
+        jlMensajeCalificacion.setForeground(new java.awt.Color(0, 0, 0));
         jlMensajeCalificacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMensajeCalificacion.setText("Mensaje calificacion");
 
@@ -321,9 +327,8 @@ public class Window extends javax.swing.JApplet {
             }
         });
 
-        jLabel7.setText("Software realizado por Esteban Chaparro 2015");
-
-        jLabel8.setText("QUESO");
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Applet realizado por Esteban Chaparro para su uso en exeLearning 2015");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,21 +336,6 @@ public class Window extends javax.swing.JApplet {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(243, 243, 243)
-                                .addComponent(jLabel8)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(12, 12, 12)
-                        .addComponent(jlMinutos)
-                        .addGap(6, 6, 6)
-                        .addComponent(jlSeparador)
-                        .addGap(6, 6, 6)
-                        .addComponent(jlSegundos))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,69 +373,77 @@ public class Window extends javax.swing.JApplet {
                                 .addComponent(jbFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(275, 275, 275)
-                                .addComponent(jlMensajeError)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlMensajeError)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(12, 12, 12)
+                        .addComponent(jlMinutos)
+                        .addGap(6, 6, 6)
+                        .addComponent(jlSeparador)
+                        .addGap(6, 6, 6)
+                        .addComponent(jlSegundos)
+                        .addGap(43, 43, 43)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jlConsultaCalificacion)
-                        .addGap(140, 140, 140))
+                        .addGap(128, 128, 128))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlNombreResultado)
+                                    .addComponent(jlEmailResultado)
+                                    .addComponent(jlFechaResultado)
+                                    .addComponent(jlCalificacionResultado))
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jtfFechaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(71, 71, 71)
+                                            .addComponent(jlTiempoResultado)
+                                            .addGap(26, 26, 26)
+                                            .addComponent(jtfTiempoResultado))
+                                        .addComponent(jtfEmailResultado)
+                                        .addComponent(jtfNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlMensajeCalificacion)
+                                            .addComponent(jtfCalificacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlNombreResultado)
-                                            .addComponent(jlEmailResultado)
-                                            .addComponent(jlFechaResultado)
-                                            .addComponent(jlCalificacionResultado))
-                                        .addGap(50, 50, 50)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jtfFechaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(71, 71, 71)
-                                                    .addComponent(jlTiempoResultado)
-                                                    .addGap(26, 26, 26)
-                                                    .addComponent(jtfTiempoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                                                .addComponent(jtfEmailResultado)
-                                                .addComponent(jtfNombreResultado))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jlMensajeCalificacion)
-                                                    .addComponent(jtfCalificacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(64, 64, 64)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jlMensajeResultado))
-                                        .addGap(161, 161, 161))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlEmailRegistro)
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jtfEmailRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSeparator2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jlRetroalimentacionResultado)
-                                .addGap(4, 4, 4)
-                                .addComponent(jScrollPane2)))
-                        .addContainerGap())
+                                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jlMensajeResultado))
+                                .addGap(161, 161, 161))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlEmailRegistro)
+                                .addGap(24, 24, 24)
+                                .addComponent(jtfEmailRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlRetroalimentacionResultado)
+                        .addGap(4, 4, 4)
+                        .addComponent(jScrollPane2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator3)
-                        .addContainerGap())))
+                        .addContainerGap(12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +478,7 @@ public class Window extends javax.swing.JApplet {
                     .addComponent(jtfFechaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlTiempoResultado)
                     .addComponent(jtfTiempoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -504,15 +502,13 @@ public class Window extends javax.swing.JApplet {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
+                                .addComponent(jLabel1))
                             .addComponent(jbReset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jlMinutos)
                             .addComponent(jlSeparador)
                             .addComponent(jlSegundos))
-                        .addGap(16, 16, 16)
+                        .addGap(17, 17, 17)
                         .addComponent(jlInstrucciones)
                         .addGap(5, 5, 5)
                         .addComponent(jlInstrucciones2)
@@ -563,6 +559,7 @@ public class Window extends javax.swing.JApplet {
 
     private void jbComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComenzarActionPerformed
         reset = false;
+        jlMensajeError.setText("");
         if (jtfNombre.getText().trim().isEmpty()) {
             jlMensajeError.setText("Favor de escribir su nombre");
             jlMensajeError.setForeground(Color.red);
@@ -591,7 +588,8 @@ public class Window extends javax.swing.JApplet {
         jbReset.setEnabled(true);
         jtfNombre.setEditable(false);
         jtfCorreo.setEditable(false);
-//        pintarPanel();
+        jPanel1.setVisible(true);
+        pintarPanel();
         hilo = new Hilo(this);
         Thread thread = new Thread(hilo);
         thread.start();
@@ -602,6 +600,23 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_formMouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if (!tienePermiso()) {
+            String titulo = "access denied (java.util.PropertyPermission user.home read)";
+            String mensaje = "Para utilizar el applet necesario agregar las siguiente lineas al final del archivo:\n"
+                    + "<carpeta instalacion java>\\Java\\jre" + Util.getJavaVersion() + "\\lib\\security\\java.policy\n"
+                    + "\n"
+                    + "permission java.util.PropertyPermission \"user.home\", \"read\";\n"
+                    + "permission java.security.AllPermission;\n"
+                    + "permission java.io.FilePermission \"<<ALL FILES>>\", \"read\";\n"
+                    + "permission java.io.FilePermission \"<<ALL FILES>>\", \"write\";\n"
+                    + "permission java.util.PropertyPermission \"*\", \"read, write\";\n"
+                    + "permission java.util.PropertyPermission \"user.dir\", \"read\";\n"
+                    + "permission java.lang.RuntimePermission \"*\";\n"
+                    + "\n"
+                    + "Si sigues teniendo problemas consulta a tu profesor.";
+            JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
         Fondo f = new Fondo();
         this.add(f, BorderLayout.CENTER);
         this.repaint();
@@ -628,6 +643,7 @@ public class Window extends javax.swing.JApplet {
         jlMensajeCalificacion.setText("");
         jlMensajeResultado.setText("");
         jlMensajeError.setText("");
+        jPanel1.setVisible(false);
     }//GEN-LAST:event_formComponentShown
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
@@ -642,6 +658,7 @@ public class Window extends javax.swing.JApplet {
         jbReset.setEnabled(false);
         jtfNombre.setEditable(true);
         jtfCorreo.setEditable(true);
+        jPanel1.setVisible(false);
         jtfNombre.setText("");
         jtfCorreo.setText("");
         jlMinutos.setText("00");
@@ -657,10 +674,6 @@ public class Window extends javax.swing.JApplet {
         hilo.setCorriendo(false);
         insertarDatos();
     }
-
-    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNombreActionPerformed
 
     private void jbAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtrasActionPerformed
         try {
@@ -721,10 +734,6 @@ public class Window extends javax.swing.JApplet {
         Util.actualizarContadores();
     }//GEN-LAST:event_jbFinalizarActionPerformed
 
-    private void jtfNombreResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreResultadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNombreResultadoActionPerformed
-
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         if (jtfEmailRegistro.getText().trim().isEmpty()) {
@@ -781,10 +790,6 @@ public class Window extends javax.swing.JApplet {
         jtfEmailRegistro.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
-    private void jtfCalificacionResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCalificacionResultadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCalificacionResultadoActionPerformed
-
     private void insertarDatos() {
         EstudianteTO estudiante = new EstudianteTO();
         estudiante.setNombre(jtfNombre.getText());
@@ -810,7 +815,19 @@ public class Window extends javax.swing.JApplet {
         jPanel1.removeAll();
         Panel p = new Panel(ListaImagenes.getNombreImagen(contador));
         jPanel1.add(p, BorderLayout.CENTER);
+        jPanel1.setVisible(false);
         jPanel1.repaint();
+        jPanel1.setVisible(true);
+    }
+
+    private boolean tienePermiso() {
+        try {
+            File estudiantes = new File(System.getProperty("user.home") + File.separator + "estudiantes.txt");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public JLabel getJlMinutos() {
@@ -841,7 +858,6 @@ public class Window extends javax.swing.JApplet {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
