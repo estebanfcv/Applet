@@ -1,5 +1,6 @@
 package holamundo;
 
+import Clases.Fondo;
 import Clases.ListaImagenes;
 import Clases.Panel;
 import Clases.Hilo;
@@ -590,7 +591,7 @@ public class Window extends javax.swing.JApplet {
         jbReset.setEnabled(true);
         jtfNombre.setEditable(false);
         jtfCorreo.setEditable(false);
-        pintarPanel();
+//        pintarPanel();
         hilo = new Hilo(this);
         Thread thread = new Thread(hilo);
         thread.start();
@@ -601,6 +602,9 @@ public class Window extends javax.swing.JApplet {
     }//GEN-LAST:event_formMouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        Fondo f = new Fondo();
+        this.add(f, BorderLayout.CENTER);
+        this.repaint();
         Util.generarArchivos();
         Util.armarListaContadores();
         // Pimer metodo en activarse, aqui se inicializaran los valores

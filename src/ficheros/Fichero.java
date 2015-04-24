@@ -108,36 +108,49 @@ public class Fichero {
 
     public static boolean modificarCalificacionEstudiante(EstudianteTO estudiante) {
         boolean exito = false;
-        FileReader fr = null;
-        BufferedReader br = null;
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
-            fr = new FileReader(estudiantes);
-            br = new BufferedReader(fr);
+            String texto = obtenerNuevoTexto(estudiante);
             fw = new FileWriter(estudiantes, false);
             pw = new PrintWriter(fw);
-            String linea;
-            String texto = "";
-            while ((linea = br.readLine()) != null) {
-                if (linea.contains(estudiante.getEmail())) {
-                    String renglon = estudiante.getId() + "|" + estudiante.getNombre() + "|" + estudiante.getEmail() + "|"
-                            + estudiante.getTiempo() + "|" + estudiante.getFecha() + "|" + estudiante.getRetroalimentacion() + "|"
-                            + estudiante.getCalificacion();
-                    texto += renglon + "\n";
-                } else {
-                    texto += linea + "\n";
-                }
-                pw.append(texto).append("\n");
-            }
+            pw.append(texto).append("\n");
             exito = true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Util.cerrarReaders(br, fr);
             Util.cerrarLecturaEscritura(pw, fw);
         }
         return exito;
+
+    }
+
+    private static String obtenerNuevoTexto(EstudianteTO estudiante) {
+        FileReader fr = null;
+        BufferedReader br = null;
+        String texto = "";
+        String linea;
+        try {
+            fr = new FileReader(estudiantes);
+            br = new BufferedReader(fr);
+            while ((linea = br.readLine()) != null) {
+                System.out.println("la linea es::::: " + linea);
+                if (linea.contains(estudiante.getEmail())) {
+                    String renglon = estudiante.getId() + "|" + estudiante.getNombre() + "|" + estudiante.getEmail() + "|"
+                            + estudiante.getTiempo() + "|" + new SimpleDateFormat("dd/MM/yyyy").format(estudiante.getFecha()) + "|"
+                            + estudiante.getRetroalimentacion() + "|" + estudiante.getCalificacion();
+                    System.out.println("el renglon es:::::: " + renglon);
+                    texto += renglon + "\n";
+                } else {
+                    texto += linea + "\n";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Util.cerrarReaders(br, fr);
+        }
+        return texto;
     }
 
     public static List<RespuestaTO> obtenerRespuestasEstudiante(int id) {
@@ -180,7 +193,9 @@ public class Fichero {
             fw = new FileWriter(respuestas, true);
             pw = new PrintWriter(fw);
             for (DescripcionImagenTO di : lista) {
-                String renglon = ++contadorRespuestas + "|" + di.getNombre() + "|" + di.getDescripcion() + "|" + id;
+                String pregunta = di.getNombre().replace("/imagenes/", "");
+                pregunta=pregunta.substring(0, pregunta.lastIndexOf("."));
+                String renglon = ++contadorRespuestas + "|" + pregunta + "|" + di.getDescripcion() + "|" + id;
                 pw.append(renglon).append("\n");
             }
             exito = true;

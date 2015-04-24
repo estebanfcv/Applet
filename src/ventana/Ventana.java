@@ -4,6 +4,7 @@ import TO.EstudianteTO;
 import TO.RespuestaTO;
 import ficheros.Fichero;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,10 @@ public class Ventana extends javax.swing.JFrame {
         mensajeError = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         textoNombre = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        textoFecha = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        textoTiempo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -124,6 +129,19 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel5.setText("Nombre");
 
+        jLabel6.setText("Fecha");
+
+        textoFecha.setEditable(false);
+        textoFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoFechaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Tiempo");
+
+        textoTiempo.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,37 +158,52 @@ public class Ventana extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textoNombre)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoNombre))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel4)
+                                .addGap(50, 50, 50)
+                                .addComponent(campoCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(bGuardar)
+                                .addGap(6, 6, 6)
+                                .addComponent(bLimpiar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(mensajeError)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel3)
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel4)
-                        .addGap(50, 50, 50)
-                        .addComponent(campoCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(bGuardar)
-                        .addGap(6, 6, 6)
-                        .addComponent(bLimpiar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(mensajeError)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(2, 2, 2)
+                                .addComponent(jScrollPane2)))))
+                .addGap(12, 12, 12))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,10 +217,22 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(comboAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
                         .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(comboPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(comboPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(textoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(textoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -226,6 +271,8 @@ public class Ventana extends javax.swing.JFrame {
         if (!opcion.equals("---Seleccione---")) {
             estudiante = mapaEstudiantes.get(opcion);
             textoNombre.setText(estudiante.getNombre());
+            textoFecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(estudiante.getFecha()));
+            textoTiempo.setText(estudiante.getTiempo());
             listaRespuestas = Fichero.obtenerRespuestasEstudiante(estudiante.getId());
             for (RespuestaTO r : listaRespuestas) {
                 comboPregunta.addItem(r.getPregunta());
@@ -233,11 +280,12 @@ public class Ventana extends javax.swing.JFrame {
             }
         } else {
             textoNombre.setText("");
+            textoFecha.setText("");
+            textoTiempo.setText("");
         }
     }//GEN-LAST:event_comboAlumnoActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
         Util.armarListaContadores();
         listaEstudiantes = Fichero.obtenerEstudiantes();
         for (EstudianteTO e : listaEstudiantes) {
@@ -247,11 +295,9 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void campoCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCalificacionActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_campoCalificacionActionPerformed
 
     private void comboPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPreguntaActionPerformed
-        // TODO add your handling code here:
         String opcion = comboPregunta.getSelectedItem().toString();
         System.out.println(opcion);
         if (!opcion.equals("---Seleccione---")) {
@@ -263,15 +309,15 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_comboPreguntaActionPerformed
 
     private void bLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimpiarActionPerformed
-        // TODO add your handling code here:
         textoNombre.setText("");
         textoRespuesta.setText("");
         textoCalificacion.setText("");
+        textoFecha.setText("");
+        textoTiempo.setText("");
         campoCalificacion.setText("");
     }//GEN-LAST:event_bLimpiarActionPerformed
 
     private void bGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarActionPerformed
-        // TODO add your handling code here:
         if (textoCalificacion.getText().trim().isEmpty()) {
             mensajeError.setText("Favor de escribir su retroalimentación.");
             mensajeError.setForeground(Color.red);
@@ -292,6 +338,9 @@ public class Ventana extends javax.swing.JFrame {
             mensajeError.setForeground(Color.red);
         }
     }//GEN-LAST:event_bGuardarActionPerformed
+
+    private void textoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFechaActionPerformed
+    }//GEN-LAST:event_textoFechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,13 +388,17 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jlAlumno;
     private javax.swing.JLabel mensajeError;
     private javax.swing.JTextArea textoCalificacion;
+    private javax.swing.JTextField textoFecha;
     private javax.swing.JTextField textoNombre;
     private javax.swing.JTextArea textoRespuesta;
+    private javax.swing.JTextField textoTiempo;
     // End of variables declaration//GEN-END:variables
 }
